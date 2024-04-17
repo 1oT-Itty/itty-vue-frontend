@@ -196,7 +196,7 @@ onMounted(async () => {
     try {
         console.log("트렌드 게시글을 불러오는 중...");
         const fetchedArticles = await fetchAllTrendArticles();
-        articles.value = fetchedArticles;
+        articles.value = fetchedArticles.sort((a, b) => new Date(b.trendArticleCreatedDate) - new Date(a.trendArticleCreatedDate));
         console.log("불러온 트렌드 게시글:", articles.value);
     } catch (error) {
         console.error('트렌드 게시글 불러오기 에러:', error);
